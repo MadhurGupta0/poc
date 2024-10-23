@@ -58,11 +58,11 @@ def correct_transcription(transcription):
     return corrected_transcription
 
 async def text_to_speech(text, output_audio_path):
-    video = VideoFileClip("input_video.mp4")
+    
     estimated_duration = len(text.split()) / 150 * 60
-    print((video.duration / estimated_duration), estimated_duration, video.duration)
-    n = video.duration // 60
-    extra = ((video.duration - estimated_duration) / n) if n != 0 else (video.duration - estimated_duration)
+    print((duration[0] / estimated_duration), estimated_duration,duration[0])
+    n = duration[0] // 60
+    extra = ((duration[0]- estimated_duration) / n) if n != 0 else (duration[0] - estimated_duration)
     print(extra, "dshf")
     rate = "+0%"
     if extra > 0 and extra <= 5:
@@ -80,8 +80,8 @@ async def text_to_speech(text, output_audio_path):
         audio = silence + AudioSegment.from_file(output_audio_path) + silence
         audio.export(output_audio_path, format="wav")
         return
-    elif estimated_duration * 2.5 < video.duration:
-        silence = AudioSegment.silent(duration=1000 * (video.duration / estimated_duration))
+    elif estimated_duration * 2.5 < duration[0]:
+        silence = AudioSegment.silent(duration=1000 * (duration[0] / estimated_duration))
         audio = silence
         if text.endswith("."):
             text = text[:-1]
@@ -101,11 +101,10 @@ async def text_to_speech(text, output_audio_path):
     await communicate.save(output_audio_path)
 
 async def text_to_speech2(text, output_audio_path):
-    video = VideoFileClip("input_video.mp4")
     estimated_duration = len(text.split()) / 150 * 60
-    print((video.duration / estimated_duration), estimated_duration, video.duration)
-    n = video.duration // 60
-    extra = ((  estimated_duration-video.duration) / n) if n != 0 else (video.duration - estimated_duration)
+    print((duration[0] / estimated_duration), estimated_duration, duration[0])
+    n = duration[0]// 60
+    extra = ((  estimated_duration-duration[0]) / n) if n != 0 else (duration[0] - estimated_duration)
     print(extra, "dshf")
     rate = "+0%"
     if extra > 0 and extra <= 5:
