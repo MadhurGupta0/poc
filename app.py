@@ -42,11 +42,9 @@ if uploaded_file is not None:
             asyncio.run(process_video(input_video_path, output_video_path))
 
     time.sleep(5)
-    if os.path.exists(file_path):
+    if os.path.exists(output_video_path):
 
-     st.video(output_video_path)
-
-    
+     st.video(output_video_path) 
      with open(output_video_path, "rb") as file:
         btn = st.download_button(label="Download Processed Video", data=file, file_name="processed_video.mp4",
                                  mime="video/mp4")
