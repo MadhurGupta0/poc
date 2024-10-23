@@ -1,5 +1,5 @@
-moviepy==1.0.3
-pydub==0.25.1
-requests==2.31.0
-assemblyai==0.10.2
-edge-tts==1.2.0
+moviepy
+pydub
+requests
+assemblyai
+edge-tts
